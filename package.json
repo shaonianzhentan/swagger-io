@@ -1,0 +1,65 @@
+{
+	"name": "swagger-io",
+	"displayName": "swagger-io",
+	"publisher": "test",
+	"description": "",
+	"version": "0.1.3",
+	"engines": {
+		"vscode": "^1.33.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.helloWorld",
+		"onLanguage:vue"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Swagger插件",
+			"properties": {
+				"Swagger.File": {
+					"type": "string",
+					"default": "",
+					"description": "Swagger执行文件路径"
+				},
+				"Swagger.ConfigFile": {
+					"type": "string",
+					"default": "",
+					"description": "Swagger配置文件路径"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "extension.helloWorld",
+				"title": "选择导入的接口"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "resourceLangId == javascript",
+					"command": "extension.helloWorld",
+					"group": "navigation"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"tslint": "^5.12.1",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
